@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:mealimetrics/widgets/home_widget.dart';
 import 'package:mealimetrics/widgets/actualizar_datos.dart';
+import 'package:mealimetrics/Styles/color_scheme.dart';
 
 
 const supabaseUrl = 'https://ddyveuettsjaxmdbijgb.supabase.co';
@@ -22,7 +23,11 @@ await Supabase.initialize(
     retryAttempts: 10,
   ),
 );
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope (
+      child: MyApp()
+    )
+  );
 }
 
 
@@ -58,6 +63,9 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/': (_) => const Home(),
         '/actualizarDatos': (_) => const ActualizarDatos(),
+        '/PedidosMain': (context) => const PedidosMain(),
+        '/SeleccionarPedido': (context) => const SeleccionarPedido(),
+        '/SeleccionarPlatillo': (context) => const SeleccionarPlatillo(),
       },
     );
   }
